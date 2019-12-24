@@ -1,20 +1,44 @@
 export default class Paddle {
   constructor(gameWidth, gameHeight) {
+    this.gameWidth = gameWidth;
+    this.gameHeight = gameHeight;
+
     this.width = 150; //widht for paddle
     this.height = 20; // height for paddle
 
+    this.maxSpeed = 7; //max speed for paddle
+    this.speed = 0; //speed in this moment for paddle
+
     this.position = {
-      x: gameWidth / 2 - this.width / 2,
-      y: gameHeight - this.height - 10
+      //position for paddle
+      x: gameWidth / 2 - this.width / 2, //position paddle in center of canvas
+      y: gameHeight - this.height - 5 //horisontal position of paddle
     };
   }
 
+  moveLeft() {
+    this.speed = -this.maxSpeed; //move left paddle
+  }
+
+  moveRight() {
+    this.speed = this.maxSpeed; //move right paddle
+  }
+
   draw(ctx) {
+    // this func draw the paddle
     ctx.fillStyle = "#0ff";
     ctx.fillRect(this.position.x, this.position.y, this.width, this.height);
   }
 
   update(deltaTime) {
+    //update paddle
     if (!deltaTime) return;
+
+    this.position.x += this.speed; // moving paddle left or right
+
+    if (this.position.x < 0) this.position.x = 0; // paddle can't go outside of canvas (for left side)
+    if (this.position.x + this.width > this.gameWidth)
+      // paddle can't go outside of canvas (for right side)
+      this.position.x = this.gameWidth - this.width;
   }
 }
