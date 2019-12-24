@@ -36,7 +36,6 @@ export default class Paddle {
 
   update(deltaTime) {
     //update paddle
-    if (!deltaTime) return;
 
     this.position.x += this.speed; // moving paddle left or right
 
