@@ -7,9 +7,9 @@ export default class Ball {
 
     this.game = game;
 
-    this.position = { x: 10, y: 10 }; // Start position for the Ball
-    this.speed = { x: 6, y: 3 }; // Ball speed
-    this.size = 36; // Ball size
+    this.position = { x: 10, y: 300 }; // Start position for the Ball
+    this.speed = { x: 6, y: 4 }; // Ball speed
+    this.size = 20; // Ball size
   }
 
   draw(ctx) {
