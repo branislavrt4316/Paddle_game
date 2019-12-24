@@ -1,10 +1,10 @@
 import Paddle from "/src/paddle.js";
 import InputHandler from "/src/inputs.js";
 import Ball from "/src/ball.js";
-import Brick from "/src/brick.js";
+import { buildLevel, level1 } from "/src/levels.js";
 
 export default class Game {
-  constructor(gameWidth, gameHeight) {
+  constructor(gameWidth, gameHeight, bricksPerRow) {
     this.gameWidth = gameWidth;
     this.gameHeight = gameHeight;
   }
@@ -13,12 +13,9 @@ export default class Game {
     this.ball = new Ball(this);
     this.paddle = new Paddle(this);
 
-    let bricks = [];
-    for (let i = 0; i < 10; i++) {
-      bricks.push(new Brick(this, { x: i * 52, y: 30 }));
-    }
+    let brickss = buildLevel(this, level1);
 
-    this.gameObjects = [this.ball, this.paddle, ...bricks];
+    this.gameObjects = [this.ball, this.paddle, ...brickss];
 
     new InputHandler(this.paddle); // call constructor for InputHandler
   }
