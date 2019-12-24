@@ -1,7 +1,6 @@
 export default class Paddle {
-  constructor(gameWidth, gameHeight) {
-    this.gameWidth = gameWidth;
-    this.gameHeight = gameHeight;
+  constructor(game) {
+    this.gameWidth = game.gameWidth;
 
     this.width = 150; //widht for paddle
     this.height = 20; // height for paddle
@@ -11,8 +10,8 @@ export default class Paddle {
 
     this.position = {
       //position for paddle
-      x: gameWidth / 2 - this.width / 2, //position paddle in center of canvas
-      y: gameHeight - this.height - 5 //horisontal position of paddle
+      x: game.gameWidth / 2 - this.width / 2, //position paddle in center of canvas
+      y: game.gameHeight - this.height - 5 //horisontal position of paddle
     };
   }
 
