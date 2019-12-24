@@ -6,7 +6,7 @@ export default class Paddle {
     this.width = 150; //widht for paddle
     this.height = 20; // height for paddle
 
-    this.maxSpeed = 7; //max speed for paddle
+    this.maxSpeed = 10; //max speed for paddle
     this.speed = 0; //speed in this moment for paddle
 
     this.position = {
@@ -22,6 +22,10 @@ export default class Paddle {
 
   moveRight() {
     this.speed = this.maxSpeed; //move right paddle
+  }
+
+  stop() {
+    this.speed = 0;
   }
 
   draw(ctx) {
